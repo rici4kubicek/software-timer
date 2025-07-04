@@ -1,0 +1,33 @@
+# .github/workflows/publish-package.yml
+name: Publish PlatformIO Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install PlatformIO
+        run: |
+          pip install platformio
+
+      - name: Publish package to PlatformIO Registry
+        env:
+          # Token for automatic authentication
+          PLATFORMIO_AUTH_TOKEN: ${{ secrets.PIO_TOKEN }}
+          # CI=true disables interactive prompts and progress bars
+          CI: true
+        run: |
+          # Publish the package from the current directory
+          pio pkg publish --no-interactive
