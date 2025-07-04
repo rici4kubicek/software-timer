@@ -1,0 +1,21 @@
+{
+    "name": "SoftwareTimer",
+    "version": "1.0.0",
+    "description": "Implementation of simple timer functionality for embedded systems. Uses external clock source for time measurement and provides overflow-safe timer operations.",
+    "keywords": "timer, softwareTimer, embedded",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rici4kubicek/software-timer.git"
+    },
+    "authors": [
+        {
+            "name": "Richard Kubíček",
+            "email": "rici.kubicek@gmail.com",
+            "url": "https://richardkubicek.com",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+}
