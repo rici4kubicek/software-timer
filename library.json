@@ -1,6 +1,6 @@
 {
     "name": "SoftwareTimer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Implementation of simple timer functionality for embedded systems. Uses external clock source for time measurement and provides overflow-safe timer operations.",
     "keywords": "timer, softwareTimer, embedded",
     "repository": {
