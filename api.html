@@ -47,6 +47,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv45Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5Timer5startE"><code class="docutils literal notranslate"><span class="pre">start</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5Timer8intervalE"><code class="docutils literal notranslate"><span class="pre">interval</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5Timer9evaluatedE"><code class="docutils literal notranslate"><span class="pre">evaluated</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv415Timer_ClockTime"><code class="docutils literal notranslate"><span class="pre">Timer_ClockTime</span></code></a></li>
@@ -54,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv49Timer_SetP5Timer8uint32_t"><code class="docutils literal notranslate"><span class="pre">Timer_Set()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv415Timer_IsExpiredP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_IsExpired()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv415Timer_RemainingP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_Remaining()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv428Timer_IsExpiredEvaluatedOnceP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_IsExpiredEvaluatedOnce()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
 </ul>
 </li>
@@ -103,6 +105,12 @@
 <dt class="sig sig-object cpp" id="_CPPv4N5Timer8intervalE">
 <span id="_CPPv3N5Timer8intervalE"></span><span id="_CPPv2N5Timer8intervalE"></span><span id="Timer::interval__uint32_t"></span><span class="target" id="structTimer_1ac399c1f578a991291e0d6ed466d74187"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interval</span></span></span><a class="headerlink" href="#_CPPv4N5Timer8intervalE" title="Link to this definition"></a><br /></dt>
 <dd><p><a class="reference internal" href="#structTimer"><span class="std std-ref">Timer</span></a> interval in clock ticks </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Timer9evaluatedE">
+<span id="_CPPv3N5Timer9evaluatedE"></span><span id="_CPPv2N5Timer9evaluatedE"></span><span id="Timer::evaluated__b"></span><span class="target" id="structTimer_1a5e2f5e387839b737a40c1f40601e4efc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">evaluated</span></span></span><a class="headerlink" href="#_CPPv4N5Timer9evaluatedE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="#structTimer"><span class="std std-ref">Timer</span></a> flag which signalize complete evaluation </p>
 </dd></dl>
 
 </div>
@@ -198,10 +206,9 @@ Sets and starts a timer with specified interval.</p>
 <dt class="sig sig-object cpp" id="_CPPv415Timer_IsExpiredP5Timer">
 <span id="_CPPv315Timer_IsExpiredP5Timer"></span><span id="_CPPv215Timer_IsExpiredP5Timer"></span><span id="Timer_IsExpired__TimerP"></span><span class="target" id="timer_8h_1a0726d80ee0ca85feefb04c2a78fbcedc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer_IsExpired</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45Timer" title="Timer"><span class="n"><span class="pre">Timer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">timer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415Timer_IsExpiredP5Timer" title="Link to this definition"></a><br /></dt>
 <dd><p>Checks if timer has expired. </p>
-<p>Tests whether the timer interval has elapsed since it was set. If the timer has expired, it is automatically deactivated. Inactive timers always return false.</p>
+<p>Tests whether the timer interval has elapsed since it was set.</p>
 <p>
-Checks if timer has expired.</p>
-<p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters. When timer expires, it is automatically deactivated to prevent multiple expiration notifications.</p>
+Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function uses overflow-safe arithmetic, so it works correctly even when the system clock wraps around.</p>
@@ -249,6 +256,34 @@ Calculates how many clock ticks remain until the timer expires. Uses unsigned ar
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Timer_IsExpiredEvaluatedOnceP5Timer">
+<span id="_CPPv328Timer_IsExpiredEvaluatedOnceP5Timer"></span><span id="_CPPv228Timer_IsExpiredEvaluatedOnceP5Timer"></span><span id="Timer_IsExpiredEvaluatedOnce__TimerP"></span><span class="target" id="timer_8h_1a3fc792c3b78ff7b2b7435109bed9f69c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer_IsExpiredEvaluatedOnce</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45Timer" title="Timer"><span class="n"><span class="pre">Timer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">timer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Timer_IsExpiredEvaluatedOnceP5Timer" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if timer has expired. </p>
+<p>Tests whether the timer interval has elapsed since it was set. If the timer has expired, it is automatically deactivated. Inactive timers always return false.</p>
+<p>
+Checks if timer has expired.</p>
+<p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters. When timer expires, it is automatically deactivated to prevent multiple expiration notifications.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function uses overflow-safe arithmetic, so it works correctly even when the system clock wraps around.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timer</strong> – Pointer to timer structure </p></li>
+<li><p><strong>timer</strong> – Pointer to timer structure to check </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if timer has expired, false otherwise</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if timer was active and has expired, false otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -292,9 +327,8 @@ Calculates how many clock ticks remain until the timer expires. Uses unsigned ar
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="timer_8c_1a0726d80ee0ca85feefb04c2a78fbcedc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer_IsExpired</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45Timer" title="Timer"><span class="n"><span class="pre">Timer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">timer</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Checks if timer has expired and deactivates it. </p>
-<p>Checks if timer has expired.</p>
-<p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters. When timer expires, it is automatically deactivated to prevent multiple expiration notifications.</p>
+<dd><p>Checks if timer has expired. </p>
+<p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>timer</strong> – Pointer to timer structure to check </p>
@@ -316,6 +350,22 @@ Calculates how many clock ticks remain until the timer expires. Uses unsigned ar
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Number of clock ticks remaining, or 0 if expired </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="timer_8c_1a3fc792c3b78ff7b2b7435109bed9f69c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer_IsExpiredEvaluatedOnce</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45Timer" title="Timer"><span class="n"><span class="pre">Timer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">timer</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Checks if timer has expired and deactivates it. </p>
+<p>Checks if timer has expired.</p>
+<p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters. When timer expires, it is automatically deactivated to prevent multiple expiration notifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timer</strong> – Pointer to timer structure to check </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if timer was active and has expired, false otherwise </p>
 </dd>
 </dl>
 </dd></dl>
