@@ -39,15 +39,14 @@ void Timer_Set(Timer * timer, uint32_t interval)
 {
     timer->start = clockTime();
     timer->interval = interval;
+    timer->evaluated = false;
 }
 
 /**
- * @brief Checks if timer has expired and deactivates it
+ * @brief Checks if timer has expired
  *
  * Compares elapsed time since timer start with the configured interval.
  * Uses unsigned arithmetic which is overflow-safe for 32-bit counters.
- * When timer expires, it is automatically deactivated to prevent
- * multiple expiration notifications.
  *
  * @param timer Pointer to timer structure to check
  * @return true if timer was active and has expired, false otherwise
@@ -79,4 +78,27 @@ uint32_t Timer_Remaining(Timer * timer)
     }
 
     return timer->interval - elapsed;
+}
+
+/**
+ * @brief Checks if timer has expired and deactivates it
+ *
+ * Compares elapsed time since timer start with the configured interval.
+ * Uses unsigned arithmetic which is overflow-safe for 32-bit counters.
+ * When timer expires, it is automatically deactivated to prevent
+ * multiple expiration notifications.
+ *
+ * @param timer Pointer to timer structure to check
+ * @return true if timer was active and has expired, false otherwise
+ */
+bool Timer_IsExpiredEvaluatedOnce(Timer * timer)
+{
+    if (timer->evaluated)
+        return false;
+    
+    if (clockTime() - timer->start >= timer->interval) {
+        timer->evaluated = true;
+        return true;
+    }
+    return false;
 }

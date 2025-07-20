@@ -46,6 +46,7 @@ extern "C" {
 typedef struct {
     uint32_t start; /**< Start timestamp when timer was set */
     uint32_t interval; /**< Timer interval in clock ticks */
+    bool evaluated;  /**< Timer flag which signalize complete evaluation */
 } Timer;
 
 /**
@@ -79,8 +80,6 @@ void Timer_Set(Timer * timer, uint32_t interval);
  * @brief Checks if timer has expired
  *
  * Tests whether the timer interval has elapsed since it was set.
- * If the timer has expired, it is automatically deactivated.
- * Inactive timers always return false.
  *
  * @param timer Pointer to timer structure
  * @return true if timer has expired, false otherwise
@@ -103,6 +102,20 @@ bool Timer_IsExpired(Timer * timer);
  *       correctly even when the system clock wraps around.
  */
 uint32_t Timer_Remaining(Timer * timer);
+/**
+ * @brief Checks if timer has expired
+ *
+ * Tests whether the timer interval has elapsed since it was set.
+ * If the timer has expired, it is automatically deactivated.
+ * Inactive timers always return false.
+ *
+ * @param timer Pointer to timer structure
+ * @return true if timer has expired, false otherwise
+ *
+ * @note This function uses overflow-safe arithmetic, so it works
+ *       correctly even when the system clock wraps around.
+ */
+bool Timer_IsExpiredEvaluatedOnce(Timer * timer);
 
 #ifdef __cplusplus
 }
