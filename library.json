@@ -15,6 +15,17 @@
             "maintainer": true
         }
     ],
+    "examples": [
+        {
+            "name": "Basic usage",
+            "base": "example",
+            "files": [
+                "platformio.ini",
+                "src/main.c",
+                "scripts/run_native.py"
+            ]
+        }
+    ],
     "license": "MIT",
     "frameworks": "*",
     "platforms": "*"
