@@ -5,8 +5,7 @@ Software Timer — Documentation
 
 A simple, overflow-safe timer library for embedded systems written in C.
 Provides basic timer functionality using an external clock source with minimal
-dependencies and lightweight implementation. The documentation is generated
-with Doxygen and Sphinx (Breathe).
+dependencies and lightweight implementation.
 
 Key features
 ------------
@@ -20,5 +19,6 @@ Key features
    :maxdepth: 2
    :caption: Contents
 
+   getting_started
    api
 

@@ -1,8 +1,7 @@
 API reference
 =============
 
-This section documents the public C API of the library. The documentation is
-extracted from header comments and grouped using Doxygen.
+This section documents the public C API of the library.
 
 Overview
 --------
