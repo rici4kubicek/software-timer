@@ -20,18 +20,38 @@ author = 'Richard Kubíček'
 extensions = [
     'breathe',
     'sphinx.ext.viewcode',
+    'sphinx.ext.todo',
+    'sphinx.ext.autosectionlabel',
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
+
+# Localization
+language = 'en'
+
+autosectionlabel_prefix_document = True
 
 breathe_projects = {
     "SoftwareTimer": os.path.abspath('../build/doxygen/xml')
 }
 breathe_default_project = "SoftwareTimer"
 
+# -- HTML --------------------------------------------------------------------
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
+
+# Header and small theme tweaks
+html_title = "Software Timer - Documentation"
+html_theme_options = {
+    "collapse_navigation": False,
+    "navigation_depth": 3,
+    "style_external_links": True,
+}
+
+# Extensions - TODO
+todo_include_todos = True
