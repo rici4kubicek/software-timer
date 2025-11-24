@@ -207,7 +207,7 @@ void SoftwareTimer_Set(SoftwareTimer * timer, uint32_t interval);
  * }
  * @endcode
  */
-bool SoftwareTimer_IsExpired(SoftwareTimer * timer);
+bool SoftwareTimer_IsExpired(const SoftwareTimer * timer);
 
 /**
  * @brief Returns remaining time until software timer expiration
@@ -243,7 +243,7 @@ bool SoftwareTimer_IsExpired(SoftwareTimer * timer);
  * }
  * @endcode
  */
-uint32_t SoftwareTimer_Remaining(SoftwareTimer * timer);
+uint32_t SoftwareTimer_Remaining(const SoftwareTimer * timer);
 /**
  * @brief Checks if software timer has expired (one-shot evaluation)
  *

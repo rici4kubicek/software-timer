@@ -104,7 +104,7 @@ void SoftwareTimer_Set(SoftwareTimer * timer, uint32_t interval)
  * (current - start) >= interval works correctly even during overflow.
  * Includes defensive checks in debug builds.
  */
-bool SoftwareTimer_IsExpired(SoftwareTimer * timer)
+bool SoftwareTimer_IsExpired(const SoftwareTimer * timer)
 {
     SOFTWARETIMER_ASSERT(timer != NULL);
     SOFTWARETIMER_ASSERT(clockTime != NULL);
@@ -125,7 +125,7 @@ bool SoftwareTimer_IsExpired(SoftwareTimer * timer)
  * - Otherwise returns remaining time (interval - elapsed)
  * - Includes defensive checks in debug builds
  */
-uint32_t SoftwareTimer_Remaining(SoftwareTimer * timer)
+uint32_t SoftwareTimer_Remaining(const SoftwareTimer * timer)
 {
     SOFTWARETIMER_ASSERT(timer != NULL);
     SOFTWARETIMER_ASSERT(clockTime != NULL);
