@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; Software Timer - Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API reference" href="api.html" />
+    <link rel="prev" title="Software Timer — Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Timer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-and-integration-into-a-project">Installation and integration into a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-usage-example">Quick usage example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#one-shot-timer-example">One-shot timer example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-features">Key features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#main-structure">Main structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#type-definitions">Type definitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_ClockTime</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv417SoftwareTimer_SetP13SoftwareTimer8uint32_t"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_IsExpiredP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpired()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_RemainingP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Remaining()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv436SoftwareTimer_IsExpiredEvaluatedOnceP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpiredEvaluatedOnce()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#header-file">Header file</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Timer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>This page walks you through the basic usage of the library.</p>
+<section id="installation-and-integration-into-a-project">
+<h2>Installation and integration into a project<a class="headerlink" href="#installation-and-integration-into-a-project" title="Link to this heading"></a></h2>
+<p>The library is written in C and consists of the header <code class="docutils literal notranslate"><span class="pre">include/software_timer.h</span></code>
+and the implementation in <code class="docutils literal notranslate"><span class="pre">src/software_timer.c</span></code>. The library is simple and
+self-contained with no configuration files needed.</p>
+<p>Below are the recommended installation methods, similar to the PlatformIO
+Installation page:
+<a class="reference external" href="https://registry.platformio.org/libraries/rici4kubicek/SoftwareTimer/installation">https://registry.platformio.org/libraries/rici4kubicek/SoftwareTimer/installation</a></p>
+<ul>
+<li><dl>
+<dt>PlatformIO (recommended)</dt><dd><p>Add the dependency to your <code class="docutils literal notranslate"><span class="pre">platformio.ini</span></code>:</p>
+<blockquote>
+<div><div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:your_env]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">lib_deps</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">rici4kubicek/SoftwareTimer@^1.0.2</span>
+</pre></div>
+</div>
+<p>Note: you can pin the version as needed. The latest version is listed on
+the library page in the PlatformIO registry.</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p>PlatformIO (install directly from the registry via CLI)</p>
+<p>Run in the project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;rici4kubicek/SoftwareTimer&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>CMake / manual integration (without PlatformIO)</p>
+<ol class="arabic">
+<li><p>Add the source files to your build system:</p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">src/software_timer.c</span></code> to your compilation.</p></li>
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">include</span></code> directory is on the include path.</p></li>
+</ul>
+<p>Example for CMake:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span><span class="s">SoftwareTimer</span><span class="w"> </span><span class="s">STATIC</span>
+<span class="w">    </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_LIST_DIR</span><span class="o">}</span><span class="s">/src/software_timer.c</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">SoftwareTimer</span><span class="w"> </span><span class="s">PUBLIC</span>
+<span class="w">    </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_LIST_DIR</span><span class="o">}</span><span class="s">/include</span><span class="p">)</span>
+
+<span class="c"># optional: your targets that use the library</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_app</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">SoftwareTimer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>As a git submodule</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/rici4kubicek/software-timer.git<span class="w"> </span>external/software-timer
+</pre></div>
+</div>
+<p>Then add the source and include paths (see the CMake example above) to your
+build.</p>
+</li>
+</ul>
+</section>
+<section id="quick-usage-example">
+<h2>Quick usage example<a class="headerlink" href="#quick-usage-example" title="Link to this heading"></a></h2>
+<p>The following example demonstrates basic timer usage with a simple millisecond
+clock function:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;software_timer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+
+<span class="c1">// Simple millisecond clock implementation</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">millis</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">timespec</span><span class="w"> </span><span class="n">ts</span><span class="p">;</span>
+<span class="w">    </span><span class="n">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_MONOTONIC</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ts</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="n">ts</span><span class="p">.</span><span class="n">tv_sec</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ts</span><span class="p">.</span><span class="n">tv_nsec</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SoftwareTimer</span><span class="w"> </span><span class="n">myTimer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Initialize the timer module with clock source</span>
+<span class="w">    </span><span class="n">SoftwareTimer_Init</span><span class="p">(</span><span class="n">millis</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Set timer to expire after 1000ms (1 second)</span>
+<span class="w">    </span><span class="n">SoftwareTimer_Set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Main loop</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SoftwareTimer_IsExpired</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Timer expired!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Reset timer for another 2 seconds</span>
+<span class="w">            </span><span class="n">SoftwareTimer_Set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Check remaining time</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SoftwareTimer_Remaining</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Time remaining: %u ms</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">remaining</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="one-shot-timer-example">
+<h2>One-shot timer example<a class="headerlink" href="#one-shot-timer-example" title="Link to this heading"></a></h2>
+<p>For timers that should only trigger once, use the evaluated-once variant:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;software_timer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SoftwareTimer</span><span class="w"> </span><span class="n">myTimer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">SoftwareTimer_Init</span><span class="p">(</span><span class="n">millis</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SoftwareTimer_Set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span><span class="w">  </span><span class="c1">// 5 second timeout</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// This will return true only once when timer expires</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SoftwareTimer_IsExpiredEvaluatedOnce</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Timer expired once!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Timer won&#39;t trigger again until you call Set() again</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="key-features">
+<h2>Key features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Overflow-safe</strong>: Uses unsigned arithmetic that works correctly even when
+the system clock wraps around at 32-bit boundary.</p></li>
+<li><p><strong>Lightweight</strong>: Minimal memory footprint, suitable for embedded systems.</p></li>
+<li><p><strong>Flexible</strong>: Works with any monotonic clock source via callback function.</p></li>
+<li><p><strong>Simple API</strong>: Only 5 functions to learn.</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The path to the Doxygen XML is configured in <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> via
+<code class="docutils literal notranslate"><span class="pre">breathe_projects</span></code> and points to <code class="docutils literal notranslate"><span class="pre">../build/doxygen/xml</span></code> (relative to
+<code class="docutils literal notranslate"><span class="pre">docs/source</span></code>).</p></li>
+<li><p>The documentation theme is <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code>.</p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html"><span class="doc">API reference</span></a> – detailed API reference including all functions and structures</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example/src/main.c</span></code> – complete working example</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test/test.c</span></code> – comprehensive unit tests demonstrating all features</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software Timer — Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Richard Kubíček.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

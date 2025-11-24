@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Software Timer documentation &mdash; Software Timer  documentation</title>
+  <title>Software Timer — Documentation &mdash; Software Timer - Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Reference" href="api.html" /> 
+    <link rel="next" title="Getting started" href="getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,9 +41,38 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation-and-integration-into-a-project">Installation and integration into a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-usage-example">Quick usage example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#one-shot-timer-example">One-shot timer example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#key-features">Key features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#main-structure">Main structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#type-definitions">Type definitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_ClockTime</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv417SoftwareTimer_SetP13SoftwareTimer8uint32_t"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_IsExpiredP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpired()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_RemainingP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Remaining()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv436SoftwareTimer_IsExpiredEvaluatedOnceP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpiredEvaluatedOnce()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#header-file">Header file</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -56,11 +85,11 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Software Timer documentation</li>
+      <li class="breadcrumb-item active">Software Timer — Documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -71,30 +100,49 @@
            <div itemprop="articleBody">
              
   <section id="software-timer-documentation">
-<h1>Software Timer documentation<a class="headerlink" href="#software-timer-documentation" title="Link to this heading"></a></h1>
+<h1>Software Timer — Documentation<a class="headerlink" href="#software-timer-documentation" title="Link to this heading"></a></h1>
+<p>A simple, overflow-safe timer library for embedded systems written in C.
+Provides basic timer functionality using an external clock source with minimal
+dependencies and lightweight implementation.</p>
+<section id="key-features">
+<h2>Key features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>overflow-safe arithmetic using unsigned integer operations</p></li>
+<li><p>external clock source abstraction via callback</p></li>
+<li><p>minimal RAM and CPU overhead</p></li>
+<li><p>lightweight implementation suitable for resource-constrained systems</p></li>
+<li><p>one-shot and evaluated-once timer modes</p></li>
+</ul>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv45Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv415Timer_ClockTime"><code class="docutils literal notranslate"><span class="pre">Timer_ClockTime</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv410Timer_Init15Timer_ClockTime"><code class="docutils literal notranslate"><span class="pre">Timer_Init()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv49Timer_SetP5Timer8uint32_t"><code class="docutils literal notranslate"><span class="pre">Timer_Set()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv415Timer_IsExpiredP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_IsExpired()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv415Timer_RemainingP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_Remaining()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv428Timer_IsExpiredEvaluatedOnceP5Timer"><code class="docutils literal notranslate"><span class="pre">Timer_IsExpiredEvaluatedOnce()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation-and-integration-into-a-project">Installation and integration into a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-usage-example">Quick usage example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#one-shot-timer-example">One-shot timer example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#key-features">Key features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#main-structure">Main structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#type-definitions">Type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#header-file">Header file</a></li>
 </ul>
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
