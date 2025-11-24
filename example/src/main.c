@@ -1,27 +1,29 @@
+#include "software_timer.h"
 #include <stdio.h>
-#include "timer.h"
 #include <time.h>
 
-static uint32_t millis() {
+static uint32_t millis()
+{
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (uint32_t)(ts.tv_sec * 1000 + ts.tv_nsec / 1000000);
+    return (uint32_t) (ts.tv_sec * 1000 + ts.tv_nsec / 1000000);
 }
 
-Timer myTimer;
+SoftwareTimer myTimer;
 
-int main() {
+int main()
+{
     printf("Hello, world!\n");
     fflush(stdout);
 
-    Timer_Init(millis);
-    Timer_Set(&myTimer, 5000);
+    SoftwareTimer_Init(millis);
+    SoftwareTimer_Set(&myTimer, 5000);
 
-    while(1) {
-        if (Timer_IsExpired(&myTimer)) {
+    while (1) {
+        if (SoftwareTimer_IsExpired(&myTimer)) {
             printf("Timer expired!\n");
             fflush(stdout);
-            Timer_Set(&myTimer, 2000);
+            SoftwareTimer_Set(&myTimer, 2000);
         }
     }
     return 0;

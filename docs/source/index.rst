@@ -1,14 +1,24 @@
-.. Software Timer documentation master file, created by
-   sphinx-quickstart on Fri Jul  4 21:53:12 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Software Timer documentation master file
 
-Software Timer documentation
-============================
+Software Timer — Documentation
+===============================
+
+A simple, overflow-safe timer library for embedded systems written in C.
+Provides basic timer functionality using an external clock source with minimal
+dependencies and lightweight implementation.
+
+Key features
+------------
+- overflow-safe arithmetic using unsigned integer operations
+- external clock source abstraction via callback
+- minimal RAM and CPU overhead
+- lightweight implementation suitable for resource-constrained systems
+- one-shot and evaluated-once timer modes
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
+   getting_started
    api
 
