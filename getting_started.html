@@ -49,27 +49,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#quick-usage-example">Quick usage example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#one-shot-timer-example">One-shot timer example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#key-features">Key features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-assertion-behavior">Configuring assertion behavior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#main-structure">Main structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#type-definition">Type definition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#complete-api">Complete API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_ClockTime</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Init()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv417SoftwareTimer_SetP13SoftwareTimer8uint32_t"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Set()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_IsExpiredP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpired()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv423SoftwareTimer_RemainingP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Remaining()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv436SoftwareTimer_IsExpiredEvaluatedOnceP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpiredEvaluatedOnce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -241,7 +236,48 @@ the system clock wraps around at 32-bit boundary.</p></li>
 <li><p><strong>Lightweight</strong>: Minimal memory footprint, suitable for embedded systems.</p></li>
 <li><p><strong>Flexible</strong>: Works with any monotonic clock source via callback function.</p></li>
 <li><p><strong>Simple API</strong>: Only 5 functions to learn.</p></li>
+<li><p><strong>Configurable assertions</strong>: Optional parameter validation with customizable
+error handling.</p></li>
 </ul>
+</section>
+<section id="configuring-assertion-behavior">
+<h2>Configuring assertion behavior<a class="headerlink" href="#configuring-assertion-behavior" title="Link to this heading"></a></h2>
+<p>The library includes optional parameter validation using assertions. By default:</p>
+<ul class="simple">
+<li><p><strong>Debug builds</strong> (NDEBUG not defined): Uses standard <code class="docutils literal notranslate"><span class="pre">assert()</span></code></p></li>
+<li><p><strong>Release builds</strong> (NDEBUG defined): Assertions are compiled out (zero overhead)</p></li>
+</ul>
+<p>You can customize the assertion behavior by defining <code class="docutils literal notranslate"><span class="pre">SOFTWARETIMER_ASSERT</span></code>
+before compiling the library. This is useful for embedded systems with custom
+error handling.</p>
+<p>Example - Custom error handler:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// In your build configuration or before including the source:</span>
+<span class="cp">#define SOFTWARETIMER_ASSERT(expr) \</span>
+<span class="cp">    do { \</span>
+<span class="cp">        if (!(expr)) { \</span>
+<span class="cp">            error_handler(__FILE__, __LINE__, #expr); \</span>
+<span class="cp">        } \</span>
+<span class="cp">    } while(0)</span>
+</pre></div>
+</div>
+<p>Example - Always-on assertions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Keep assertions even in release builds:</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#define SOFTWARETIMER_ASSERT(expr) assert(expr)</span>
+</pre></div>
+</div>
+<p>Example - Embedded system with fault handler:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// For embedded systems without standard library:</span>
+<span class="cp">#define SOFTWARETIMER_ASSERT(expr) \</span>
+<span class="cp">    do { \</span>
+<span class="cp">        if (!(expr)) { \</span>
+<span class="cp">            system_fault_handler(); \</span>
+<span class="cp">            while(1); </span><span class="cm">/* halt execution */</span><span class="cp"> \</span>
+<span class="cp">        } \</span>
+<span class="cp">    } while(0)</span>
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">include/software_timer_config_template.h</span></code> for more configuration examples.</p>
 </section>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>

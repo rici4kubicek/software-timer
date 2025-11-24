@@ -48,27 +48,22 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-usage-example">Quick usage example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#one-shot-timer-example">One-shot timer example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#key-features">Key features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#configuring-assertion-behavior">Configuring assertion behavior</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#notes">Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further reading</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#main-structure">Main structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#type-definition">Type definition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#complete-api">Complete API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv423SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_ClockTime</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Init()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv417SoftwareTimer_SetP13SoftwareTimer8uint32_t"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Set()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv423SoftwareTimer_IsExpiredP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpired()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv423SoftwareTimer_RemainingP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Remaining()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv436SoftwareTimer_IsExpiredEvaluatedOnceP13SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer_IsExpiredEvaluatedOnce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv49clockTime"><code class="docutils literal notranslate"><span class="pre">clockTime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv413SoftwareTimer"><code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -105,44 +100,23 @@
 extracted from header comments and grouped using Doxygen.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The complete API is organized in the <code class="docutils literal notranslate"><span class="pre">software_timer_core</span></code> group, which includes:</p>
 <ul class="simple">
-<li><p>Core structures and functions live in the <code class="docutils literal notranslate"><span class="pre">software_timer_core</span></code> group.</p></li>
-<li><p>Main header file: <code class="docutils literal notranslate"><span class="pre">include/software_timer.h</span></code>.</p></li>
+<li><p>Main structure: <code class="docutils literal notranslate"><span class="pre">SoftwareTimer</span></code></p></li>
+<li><p>Type definition: <code class="docutils literal notranslate"><span class="pre">SoftwareTimer_ClockTime</span></code></p></li>
+<li><p>Functions: <code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Init()</span></code>, <code class="docutils literal notranslate"><span class="pre">SoftwareTimer_Set()</span></code>, etc.</p></li>
+<li><p>Main header file: <code class="docutils literal notranslate"><span class="pre">include/software_timer.h</span></code></p></li>
 </ul>
 </section>
-<section id="main-structure">
-<h2>Main structure<a class="headerlink" href="#main-structure" title="Link to this heading"></a></h2>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv413SoftwareTimer">
-<span id="_CPPv313SoftwareTimer"></span><span id="_CPPv213SoftwareTimer"></span><span id="SoftwareTimer"></span><span class="target" id="structSoftwareTimer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer</span></span></span><a class="headerlink" href="#_CPPv413SoftwareTimer" title="Link to this definition"></a><br /></dt>
-<dd><p>Timer state structure. </p>
-<p>Contains all necessary state information for a single software timer instance. The structure uses 32-bit unsigned integers for overflow-safe arithmetic. </p>
+<section id="complete-api">
+<h2>Complete API<a class="headerlink" href="#complete-api" title="Link to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__software__timer__core"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Core</span> <span class="pre">API</span></span></dt>
+<dd><p>Core structures and functions for software timer management. </p>
+<p>This module provides the main timer functionality including initialization, timer configuration, expiration checking, and remaining time queries. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer5startE">
-<span id="_CPPv3N13SoftwareTimer5startE"></span><span id="_CPPv2N13SoftwareTimer5startE"></span><span id="SoftwareTimer::start__uint32_t"></span><span class="target" id="structSoftwareTimer_1a9c6ce5c7452ac2f0d58d55702c02a94b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer5startE" title="Link to this definition"></a><br /></dt>
-<dd><p>Start timestamp captured when timer was set using the clock source from <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a></p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer8intervalE">
-<span id="_CPPv3N13SoftwareTimer8intervalE"></span><span id="_CPPv2N13SoftwareTimer8intervalE"></span><span id="SoftwareTimer::interval__uint32_t"></span><span class="target" id="structSoftwareTimer_1a1b4290bcaecd0be769e13ca637273a95"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interval</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer8intervalE" title="Link to this definition"></a><br /></dt>
-<dd><p>Timer interval duration in clock ticks. Timer expires when (current_time - start) &gt;= interval </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer9evaluatedE">
-<span id="_CPPv3N13SoftwareTimer9evaluatedE"></span><span id="_CPPv2N13SoftwareTimer9evaluatedE"></span><span id="SoftwareTimer::evaluated__b"></span><span class="target" id="structSoftwareTimer_1afc25c232f666edcdba69e44269c53966"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">evaluated</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer9evaluatedE" title="Link to this definition"></a><br /></dt>
-<dd><p>One-shot evaluation flag. When true, <a class="reference internal" href="#group__software__timer__core_1gaa974a8fb058f8013430d4bd9d53fa516"><span class="std std-ref">SoftwareTimer_IsExpiredEvaluatedOnce</span></a> has already detected expiration </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-</section>
-<section id="type-definition">
-<h2>Type definition<a class="headerlink" href="#type-definition" title="Link to this heading"></a></h2>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv423SoftwareTimer_ClockTime">
 <span id="_CPPv323SoftwareTimer_ClockTime"></span><span id="_CPPv223SoftwareTimer_ClockTime"></span><span id="SoftwareTimer_ClockTime"></span><span class="target" id="group__software__timer__core_1ga4772dbb978ef2c01567c40f30dac8b86"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer_ClockTime</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv423SoftwareTimer_ClockTime" title="Link to this definition"></a><br /></dt>
@@ -170,51 +144,9 @@ Example implementation for milliseconds: <div class="highlight-default notransla
 </dl>
 </dd></dl>
 
-</section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
-<dl class="cpp type">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__software__timer__core_1ga4772dbb978ef2c01567c40f30dac8b86"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer_ClockTime</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
-<dd><p>Function pointer type for clock time provider callback. </p>
-<p>This callback function should return a monotonically increasing clock value in ticks. The tick unit (milliseconds, microseconds, etc.) is application-defined but must be consistent across all timer operations.</p>
-<p>
-Example implementation for milliseconds: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">millis</span><span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">HAL_GetTick</span><span class="p">();</span> <span class="o">//</span> <span class="ow">or</span> <span class="n">equivalent</span> <span class="n">platform</span> <span class="n">function</span>
-<span class="p">}</span>
-</pre></div>
 </div>
- </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The clock function must never return decreasing values (except during overflow). </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Clock overflow at 32-bit boundary (UINT32_MAX -&gt; 0) is handled safely.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Current time value in ticks</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv49clockTime">
-<span id="_CPPv39clockTime"></span><span id="_CPPv29clockTime"></span><span id="clockTime__SoftwareTimer_ClockTime"></span><span class="target" id="group__software__timer__core_1gab162a2275f09d14ae98073f369f805ee"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423SoftwareTimer_ClockTime" title="SoftwareTimer_ClockTime"><span class="n"><span class="pre">SoftwareTimer_ClockTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clockTime</span></span></span><a class="headerlink" href="#_CPPv49clockTime" title="Link to this definition"></a><br /></dt>
-<dd><p>Static clock time provider function pointer. </p>
-<p>This static variable holds the clock source function pointer that was provided via <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a>. All timer instances share this single clock source.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This variable is initialized by <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a> and must never be NULL during timer operations. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Sharing a single clock source across all timers ensures consistency and reduces memory footprint. </p>
-</div>
-</dd></dl>
-
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime">
 <span id="_CPPv318SoftwareTimer_Init23SoftwareTimer_ClockTime"></span><span id="_CPPv218SoftwareTimer_Init23SoftwareTimer_ClockTime"></span><span id="SoftwareTimer_Init__SoftwareTimer_ClockTime"></span><span class="target" id="group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer_Init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv423SoftwareTimer_ClockTime" title="SoftwareTimer_ClockTime"><span class="n"><span class="pre">SoftwareTimer_ClockTime</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clock</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418SoftwareTimer_Init23SoftwareTimer_ClockTime" title="Link to this definition"></a><br /></dt>
@@ -226,7 +158,7 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>SoftwareTimer_ClockTime</p>
+<p><a class="reference internal" href="#group__software__timer__core_1ga4772dbb978ef2c01567c40f30dac8b86"><span class="std std-ref">SoftwareTimer_ClockTime</span></a></p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -234,10 +166,14 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 </div>
 </p>
 <p>Stores the clock function pointer for later use by timer operations. This function must be called before any timer functionality is used.</p>
-<p>Implementation simply stores the provided clock function pointer in the static clockTime variable. </p>
+<p>Implementation simply stores the provided clock function pointer in the static clockTime variable. Includes defensive check for NULL pointer in debug builds. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function is NOT thread-safe. Call it only during initialization before any concurrent access occurs.</p>
+<p>This function is NOT thread-safe. Call it only during initialization before any concurrent access occurs. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Parameter validation: In debug builds (when NDEBUG is not defined), this function asserts if clock is NULL. You can customize the assertion behavior by defining SOFTWARETIMER_ASSERT before compiling the library.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -279,7 +215,8 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 <p>Implementation details:<ul class="simple">
 <li><p>Calls clockTime() to capture current timestamp</p></li>
 <li><p>Stores interval value</p></li>
-<li><p>Resets evaluated flag to false for one-shot mode </p></li>
+<li><p>Resets evaluated flag to false for one-shot mode</p></li>
+<li><p>Includes defensive checks in debug builds </p></li>
 </ul>
 </p>
 <div class="admonition note">
@@ -301,7 +238,7 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 <dd class="field-even"><p><a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a> must have been called </p>
 </dd>
 <dt class="field-odd">Pre<span class="colon">:</span></dt>
-<dd class="field-odd"><p>timer must point to a valid SoftwareTimer structure </p>
+<dd class="field-odd"><p>timer must point to a valid <a class="reference internal" href="#structSoftwareTimer"><span class="std std-ref">SoftwareTimer</span></a> structure </p>
 </dd>
 <dt class="field-even">Post<span class="colon">:</span></dt>
 <dd class="field-even"><p>timer-&gt;start is set to current clock time </p>
@@ -340,7 +277,7 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 </div>
 </p>
 <p>Compares elapsed time since timer start with the configured interval. Uses unsigned arithmetic which is overflow-safe for 32-bit counters.</p>
-<p>Implementation uses the property of unsigned integer arithmetic where (current - start) &gt;= interval works correctly even during overflow. </p>
+<p>Implementation uses the property of unsigned integer arithmetic where (current - start) &gt;= interval works correctly even during overflow. Includes defensive checks in debug builds. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function uses overflow-safe unsigned arithmetic, so it works correctly even when the system clock wraps around at UINT32_MAX. </p>
@@ -397,7 +334,8 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 <p>Implementation:<ul class="simple">
 <li><p>Calculates elapsed time using unsigned subtraction</p></li>
 <li><p>Returns 0 if elapsed &gt;= interval (timer expired)</p></li>
-<li><p>Otherwise returns remaining time (interval - elapsed) </p></li>
+<li><p>Otherwise returns remaining time (interval - elapsed)</p></li>
+<li><p>Includes defensive checks in debug builds </p></li>
 </ul>
 </p>
 <div class="admonition note">
@@ -456,7 +394,8 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 <li><p>First checks if already evaluated (one-shot flag)</p></li>
 <li><p>If not evaluated, checks if timer expired</p></li>
 <li><p>If expired, sets evaluated flag and returns true</p></li>
-<li><p>Subsequent calls return false until timer is reset via SoftwareTimer_Set </p></li>
+<li><p>Subsequent calls return false until timer is reset via SoftwareTimer_Set</p></li>
+<li><p>Includes defensive checks in debug builds </p></li>
 </ul>
 </p>
 <div class="admonition note">
@@ -493,13 +432,55 @@ Example: <div class="highlight-default notranslate"><div class="highlight"><pre>
 </dl>
 </dd></dl>
 
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv49clockTime">
+<span id="_CPPv39clockTime"></span><span id="_CPPv29clockTime"></span><span id="clockTime__SoftwareTimer_ClockTime"></span><span class="target" id="group__software__timer__core_1gab162a2275f09d14ae98073f369f805ee"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423SoftwareTimer_ClockTime" title="SoftwareTimer_ClockTime"><span class="n"><span class="pre">SoftwareTimer_ClockTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clockTime</span></span></span><a class="headerlink" href="#_CPPv49clockTime" title="Link to this definition"></a><br /></dt>
+<dd><p>Static clock time provider function pointer. </p>
+<p>This static variable holds the clock source function pointer that was provided via <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a>. All timer instances share this single clock source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This variable is initialized by <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a> and must never be NULL during timer operations. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sharing a single clock source across all timers ensures consistency and reduces memory footprint. </p>
+</div>
+</dd></dl>
+
+</div>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp">
-<span class="target" id="structSoftwareTimer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv413SoftwareTimer">
+<span id="_CPPv313SoftwareTimer"></span><span id="_CPPv213SoftwareTimer"></span><span id="SoftwareTimer"></span><span class="target" id="structSoftwareTimer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SoftwareTimer</span></span></span><a class="headerlink" href="#_CPPv413SoftwareTimer" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;software_timer.h&gt;</em></div>
 <p>Timer state structure. </p>
 <p>Contains all necessary state information for a single software timer instance. The structure uses 32-bit unsigned integers for overflow-safe arithmetic. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer5startE">
+<span id="_CPPv3N13SoftwareTimer5startE"></span><span id="_CPPv2N13SoftwareTimer5startE"></span><span id="SoftwareTimer::start__uint32_t"></span><span class="target" id="structSoftwareTimer_1a9c6ce5c7452ac2f0d58d55702c02a94b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer5startE" title="Link to this definition"></a><br /></dt>
+<dd><p>Start timestamp captured when timer was set using the clock source from <a class="reference internal" href="#group__software__timer__core_1ga89a07d416bc8626cd10c77cb0ee8d4dc"><span class="std std-ref">SoftwareTimer_Init</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer8intervalE">
+<span id="_CPPv3N13SoftwareTimer8intervalE"></span><span id="_CPPv2N13SoftwareTimer8intervalE"></span><span id="SoftwareTimer::interval__uint32_t"></span><span class="target" id="structSoftwareTimer_1a1b4290bcaecd0be769e13ca637273a95"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interval</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer8intervalE" title="Link to this definition"></a><br /></dt>
+<dd><p>Timer interval duration in clock ticks. Timer expires when (current_time - start) &gt;= interval </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13SoftwareTimer9evaluatedE">
+<span id="_CPPv3N13SoftwareTimer9evaluatedE"></span><span id="_CPPv2N13SoftwareTimer9evaluatedE"></span><span id="SoftwareTimer::evaluated__b"></span><span class="target" id="structSoftwareTimer_1afc25c232f666edcdba69e44269c53966"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">evaluated</span></span></span><a class="headerlink" href="#_CPPv4N13SoftwareTimer9evaluatedE" title="Link to this definition"></a><br /></dt>
+<dd><p>One-shot evaluation flag. When true, <a class="reference internal" href="#group__software__timer__core_1gaa974a8fb058f8013430d4bd9d53fa516"><span class="std std-ref">SoftwareTimer_IsExpiredEvaluatedOnce</span></a> has already detected expiration </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>

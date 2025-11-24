@@ -146,6 +146,55 @@ Key features
 - **Lightweight**: Minimal memory footprint, suitable for embedded systems.
 - **Flexible**: Works with any monotonic clock source via callback function.
 - **Simple API**: Only 5 functions to learn.
+- **Configurable assertions**: Optional parameter validation with customizable
+  error handling.
+
+Configuring assertion behavior
+-------------------------------
+
+The library includes optional parameter validation using assertions. By default:
+
+- **Debug builds** (NDEBUG not defined): Uses standard ``assert()``
+- **Release builds** (NDEBUG defined): Assertions are compiled out (zero overhead)
+
+You can customize the assertion behavior by defining ``SOFTWARETIMER_ASSERT``
+before compiling the library. This is useful for embedded systems with custom
+error handling.
+
+Example - Custom error handler:
+
+.. code-block:: c
+
+   // In your build configuration or before including the source:
+   #define SOFTWARETIMER_ASSERT(expr) \
+       do { \
+           if (!(expr)) { \
+               error_handler(__FILE__, __LINE__, #expr); \
+           } \
+       } while(0)
+
+Example - Always-on assertions:
+
+.. code-block:: c
+
+   // Keep assertions even in release builds:
+   #include <assert.h>
+   #define SOFTWARETIMER_ASSERT(expr) assert(expr)
+
+Example - Embedded system with fault handler:
+
+.. code-block:: c
+
+   // For embedded systems without standard library:
+   #define SOFTWARETIMER_ASSERT(expr) \
+       do { \
+           if (!(expr)) { \
+               system_fault_handler(); \
+               while(1); /* halt execution */ \
+           } \
+       } while(0)
+
+See ``include/software_timer_config_template.h`` for more configuration examples.
 
 Notes
 -----
