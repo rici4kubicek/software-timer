@@ -16,7 +16,7 @@ Ideal for bare-metal or RTOS-based embedded projects.
 ## Features
 
 - **Overflow safety** through unsigned arithmetic  
-- **Easy integration**: only two files (`timer.h` and `timer.c`)  
+- **Easy integration**: only two files (`software_timer.h` and `software_timer.c`)  
 - **Lightweight**: minimal RAM and CPU overhead  
 - **Portable**: only requires a function returning a `uint32_t` tick count  
 
