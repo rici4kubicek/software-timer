@@ -19,7 +19,7 @@ jobs:
 
       - name: Install PlatformIO
         run: |
-          pip install platformio
+          pip install platformio==6.1.15
       - name: Run PlatformIO
         run: |
           cd example
