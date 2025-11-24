@@ -7,25 +7,16 @@ extracted from header comments and grouped using Doxygen.
 Overview
 --------
 
-- Core structures and functions live in the ``software_timer_core`` group.
-- Main header file: ``include/software_timer.h``.
+The complete API is organized in the ``software_timer_core`` group, which includes:
 
-Main structure
---------------
+- Main structure: ``SoftwareTimer``
+- Type definition: ``SoftwareTimer_ClockTime``
+- Functions: ``SoftwareTimer_Init()``, ``SoftwareTimer_Set()``, etc.
+- Main header file: ``include/software_timer.h``
 
-.. doxygenstruct:: SoftwareTimer
-   :project: SoftwareTimer
-   :members:
-
-Type definition
----------------
-
-.. doxygentypedef:: SoftwareTimer_ClockTime
-   :project: SoftwareTimer
-
-Functions
----------
+Complete API
+------------
 
 .. doxygengroup:: software_timer_core
    :project: SoftwareTimer
-   :content-only:
+   :members:
