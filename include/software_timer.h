@@ -46,7 +46,7 @@ extern "C" {
 typedef struct {
     uint32_t start; /**< Start timestamp when timer was set */
     uint32_t interval; /**< Timer interval in clock ticks */
-    bool evaluated;  /**< Timer flag which signalize complete evaluation */
+    bool evaluated;  /**< Timer flag which indicates completion of one-shot evaluation */
 } SoftwareTimer;
 
 /**
