@@ -1,0 +1,30 @@
+BasedOnStyle: LLVM
+AlignConsecutiveMacros: AcrossEmptyLines
+AlignEscapedNewlines: DontAlign
+AlignTrailingComments: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: true
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+ColumnLimit: 0
+IndentCaseLabels: true
+IndentPPDirectives: BeforeHash
+IndentWidth: 4
+MaxEmptyLinesToKeep: 2
+PointerAlignment: Middle
+SpaceAfterCStyleCast: true
