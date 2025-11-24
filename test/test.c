@@ -47,7 +47,7 @@ static void reset_timer_system(void)
     SoftwareTimer_Init(mock_clock_time);
 }
 
-void test_Timer_Init_Basic(void)
+void test_SoftwareTimer_Init_Basic(void)
 {
     SoftwareTimer timer;
     memset(&timer, 0xFF, sizeof(timer)); // Fill with garbage
@@ -56,7 +56,7 @@ void test_Timer_Init_Basic(void)
     TEST_ASSERT_FALSE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_Set_BasicOperation(void)
+void test_SoftwareTimer_Set_BasicOperation(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -69,7 +69,7 @@ void test_Timer_Set_BasicOperation(void)
     TEST_ASSERT_FALSE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_IsExpired_BasicFlow(void)
+void test_SoftwareTimer_IsExpired_BasicFlow(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -85,7 +85,7 @@ void test_Timer_IsExpired_BasicFlow(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_Remaining_BasicFlow(void)
+void test_SoftwareTimer_Remaining_BasicFlow(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -112,7 +112,7 @@ void test_Timer_Remaining_BasicFlow(void)
     TEST_ASSERT_EQUAL(0, SoftwareTimer_Remaining(&timer));
 }
 
-void test_Timer_Remaining_ZeroInterval(void)
+void test_SoftwareTimer_Remaining_ZeroInterval(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -123,7 +123,7 @@ void test_Timer_Remaining_ZeroInterval(void)
     TEST_ASSERT_EQUAL(0, SoftwareTimer_Remaining(&timer));
 }
 
-void test_Timer_Remaining_ClockOverflow(void)
+void test_SoftwareTimer_Remaining_ClockOverflow(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -144,7 +144,7 @@ void test_Timer_Remaining_ClockOverflow(void)
     TEST_ASSERT_EQUAL(0, SoftwareTimer_Remaining(&timer));
 }
 
-void test_Timer_Remaining_MaxInterval(void)
+void test_SoftwareTimer_Remaining_MaxInterval(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -163,7 +163,7 @@ void test_Timer_Remaining_MaxInterval(void)
     TEST_ASSERT_EQUAL(0, SoftwareTimer_Remaining(&timer));
 }
 
-void test_Timer_Remaining_ConsistencyWithIsExpired(void)
+void test_SoftwareTimer_Remaining_ConsistencyWithIsExpired(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -189,7 +189,7 @@ void test_Timer_Remaining_ConsistencyWithIsExpired(void)
     TEST_ASSERT_EQUAL(0, SoftwareTimer_Remaining(&timer));
 }
 
-void test_Timer_ZeroInterval(void)
+void test_SoftwareTimer_ZeroInterval(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -200,7 +200,7 @@ void test_Timer_ZeroInterval(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_ClockOverflow(void)
+void test_SoftwareTimer_ClockOverflow(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -218,7 +218,7 @@ void test_Timer_ClockOverflow(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_MultipleTimers(void)
+void test_SoftwareTimer_MultipleTimers(void)
 {
     SoftwareTimer timer1, timer2, timer3;
     reset_timer_system();
@@ -251,7 +251,7 @@ void test_Timer_MultipleTimers(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer3));
 }
 
-void test_Timer_Reset(void)
+void test_SoftwareTimer_Reset(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -271,7 +271,7 @@ void test_Timer_Reset(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_MaxInterval(void)
+void test_SoftwareTimer_MaxInterval(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -287,7 +287,7 @@ void test_Timer_MaxInterval(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_BoundaryConditions(void)
+void test_SoftwareTimer_BoundaryConditions(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -303,7 +303,7 @@ void test_Timer_BoundaryConditions(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_RepeatedCalls(void)
+void test_SoftwareTimer_RepeatedCalls(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -324,7 +324,7 @@ void test_Timer_RepeatedCalls(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_LargeInterval(void)
+void test_SoftwareTimer_LargeInterval(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -338,7 +338,7 @@ void test_Timer_LargeInterval(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_ConsecutiveOperations(void)
+void test_SoftwareTimer_ConsecutiveOperations(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -362,7 +362,7 @@ void test_Timer_ConsecutiveOperations(void)
     TEST_ASSERT_TRUE(SoftwareTimer_IsExpired(&timer));
 }
 
-void test_Timer_StateConsistency(void)
+void test_SoftwareTimer_StateConsistency(void)
 {
     SoftwareTimer timer;
     reset_timer_system();
@@ -398,24 +398,24 @@ int runUnityTests(void)
 {
     UNITY_BEGIN();
 
-    RUN_TEST(test_Timer_Init_Basic);
-    RUN_TEST(test_Timer_Set_BasicOperation);
-    RUN_TEST(test_Timer_IsExpired_BasicFlow);
-    RUN_TEST(test_Timer_Remaining_BasicFlow);
-    RUN_TEST(test_Timer_Remaining_ZeroInterval);
-    RUN_TEST(test_Timer_Remaining_ClockOverflow);
-    RUN_TEST(test_Timer_Remaining_MaxInterval);
-    RUN_TEST(test_Timer_Remaining_ConsistencyWithIsExpired);
-    RUN_TEST(test_Timer_ZeroInterval);
-    RUN_TEST(test_Timer_ClockOverflow);
-    RUN_TEST(test_Timer_MultipleTimers);
-    RUN_TEST(test_Timer_Reset);
-    RUN_TEST(test_Timer_MaxInterval);
-    RUN_TEST(test_Timer_BoundaryConditions);
-    RUN_TEST(test_Timer_RepeatedCalls);
-    RUN_TEST(test_Timer_LargeInterval);
-    RUN_TEST(test_Timer_ConsecutiveOperations);
-    RUN_TEST(test_Timer_StateConsistency);
+    RUN_TEST(test_SoftwareTimer_Init_Basic);
+    RUN_TEST(test_SoftwareTimer_Set_BasicOperation);
+    RUN_TEST(test_SoftwareTimer_IsExpired_BasicFlow);
+    RUN_TEST(test_SoftwareTimer_Remaining_BasicFlow);
+    RUN_TEST(test_SoftwareTimer_Remaining_ZeroInterval);
+    RUN_TEST(test_SoftwareTimer_Remaining_ClockOverflow);
+    RUN_TEST(test_SoftwareTimer_Remaining_MaxInterval);
+    RUN_TEST(test_SoftwareTimer_Remaining_ConsistencyWithIsExpired);
+    RUN_TEST(test_SoftwareTimer_ZeroInterval);
+    RUN_TEST(test_SoftwareTimer_ClockOverflow);
+    RUN_TEST(test_SoftwareTimer_MultipleTimers);
+    RUN_TEST(test_SoftwareTimer_Reset);
+    RUN_TEST(test_SoftwareTimer_MaxInterval);
+    RUN_TEST(test_SoftwareTimer_BoundaryConditions);
+    RUN_TEST(test_SoftwareTimer_RepeatedCalls);
+    RUN_TEST(test_SoftwareTimer_LargeInterval);
+    RUN_TEST(test_SoftwareTimer_ConsecutiveOperations);
+    RUN_TEST(test_SoftwareTimer_StateConsistency);
 
     return UNITY_END();
 }
