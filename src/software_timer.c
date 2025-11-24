@@ -16,6 +16,31 @@
  */
 
 #include "software_timer.h"
+#include <stddef.h>
+
+/**
+ * @def SOFTWARETIMER_ASSERT
+ * @brief Configurable assertion macro for parameter validation
+ *
+ * Users can define their own assertion handler by defining SOFTWARETIMER_ASSERT
+ * before including this file. If not defined, the default behavior is:
+ * - In debug builds (NDEBUG not defined): use standard assert()
+ * - In release builds (NDEBUG defined): compile to empty statement
+ *
+ * Example of custom assertion:
+ * @code
+ * #define SOFTWARETIMER_ASSERT(expr) if(!(expr)) my_error_handler()
+ * #include "software_timer.c"
+ * @endcode
+ */
+#ifndef SOFTWARETIMER_ASSERT
+    #ifdef NDEBUG
+        #define SOFTWARETIMER_ASSERT(expr) ((void) 0)
+    #else
+        #include <assert.h>
+        #define SOFTWARETIMER_ASSERT(expr) assert(expr)
+    #endif
+#endif
 
 /**
  * @addtogroup software_timer_core
@@ -42,10 +67,12 @@ static SoftwareTimer_ClockTime clockTime;
  * This function must be called before any timer functionality is used.
  *
  * Implementation simply stores the provided clock function pointer in
- * the static clockTime variable.
+ * the static clockTime variable. Includes defensive check for NULL pointer
+ * in debug builds.
  */
 void SoftwareTimer_Init(SoftwareTimer_ClockTime clock)
 {
+    SOFTWARETIMER_ASSERT(clock != NULL);
     clockTime = clock;
 }
 
@@ -58,9 +85,12 @@ void SoftwareTimer_Init(SoftwareTimer_ClockTime clock)
  * - Calls clockTime() to capture current timestamp
  * - Stores interval value
  * - Resets evaluated flag to false for one-shot mode
+ * - Includes defensive checks in debug builds
  */
 void SoftwareTimer_Set(SoftwareTimer * timer, uint32_t interval)
 {
+    SOFTWARETIMER_ASSERT(timer != NULL);
+    SOFTWARETIMER_ASSERT(clockTime != NULL);
     timer->start = clockTime();
     timer->interval = interval;
     timer->evaluated = false;
@@ -72,9 +102,12 @@ void SoftwareTimer_Set(SoftwareTimer * timer, uint32_t interval)
  *
  * Implementation uses the property of unsigned integer arithmetic where
  * (current - start) >= interval works correctly even during overflow.
+ * Includes defensive checks in debug builds.
  */
 bool SoftwareTimer_IsExpired(SoftwareTimer * timer)
 {
+    SOFTWARETIMER_ASSERT(timer != NULL);
+    SOFTWARETIMER_ASSERT(clockTime != NULL);
     if (clockTime() - timer->start >= timer->interval) {
         return true;
     }
@@ -90,9 +123,12 @@ bool SoftwareTimer_IsExpired(SoftwareTimer * timer)
  * - Calculates elapsed time using unsigned subtraction
  * - Returns 0 if elapsed >= interval (timer expired)
  * - Otherwise returns remaining time (interval - elapsed)
+ * - Includes defensive checks in debug builds
  */
 uint32_t SoftwareTimer_Remaining(SoftwareTimer * timer)
 {
+    SOFTWARETIMER_ASSERT(timer != NULL);
+    SOFTWARETIMER_ASSERT(clockTime != NULL);
     uint32_t elapsed = clockTime() - timer->start;
 
     if (elapsed >= timer->interval) {
@@ -113,9 +149,12 @@ uint32_t SoftwareTimer_Remaining(SoftwareTimer * timer)
  * - If not evaluated, checks if timer expired
  * - If expired, sets evaluated flag and returns true
  * - Subsequent calls return false until timer is reset via SoftwareTimer_Set
+ * - Includes defensive checks in debug builds
  */
 bool SoftwareTimer_IsExpiredEvaluatedOnce(SoftwareTimer * timer)
 {
+    SOFTWARETIMER_ASSERT(timer != NULL);
+    SOFTWARETIMER_ASSERT(clockTime != NULL);
     if (timer->evaluated)
         return false;
 

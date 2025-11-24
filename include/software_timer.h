@@ -23,6 +23,20 @@
  * - External clock source abstraction via callback
  * - Overflow-safe arithmetic using unsigned integer operations
  * - Lightweight implementation suitable for resource-constrained systems
+ * - Configurable assertion system for parameter validation
+ *
+ * Custom assertion handler
+ *
+ * The library includes optional parameter validation using assertions. By default:
+ * - Debug builds (NDEBUG not defined): standard assert() is used
+ * - Release builds (NDEBUG defined): assertions are compiled out
+ *
+ * You can provide your own assertion handler by defining SOFTWARETIMER_ASSERT before
+ * compiling the library:
+ * @code
+ * // In your project configuration or before including software_timer.c:
+ * #define SOFTWARETIMER_ASSERT(expr) if(!(expr)) my_error_handler()
+ * @endcode
  *
  * Usage example:
  * @code
@@ -114,6 +128,9 @@ typedef uint32_t (*SoftwareTimer_ClockTime)(void);
  *
  * @note This function is NOT thread-safe. Call it only during initialization
  *       before any concurrent access occurs.
+ * @note Parameter validation: In debug builds (when NDEBUG is not defined), this
+ *       function asserts if clock is NULL. You can customize the assertion behavior
+ *       by defining SOFTWARETIMER_ASSERT before compiling the library.
  *
  * @see SoftwareTimer_ClockTime
  * @see SoftwareTimer_Set
