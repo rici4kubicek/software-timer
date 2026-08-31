@@ -126,7 +126,7 @@ the library page in the PlatformIO registry.</p>
 </li>
 <li><p>PlatformIO (install directly from the registry via CLI)</p>
 <p>Run in the project root:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;rici4kubicek/SoftwareTimer&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">"rici4kubicek/SoftwareTimer"</span>
 </pre></div>
 </div>
 </li>
@@ -186,7 +186,7 @@ clock function:</p>
 <span class="w">    </span><span class="c1">// Main loop</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SoftwareTimer_IsExpired</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Timer expired!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Timer expired!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <span class="w">            </span><span class="c1">// Reset timer for another 2 seconds</span>
 <span class="w">            </span><span class="n">SoftwareTimer_Set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
@@ -194,7 +194,7 @@ clock function:</p>
 <span class="w">        </span><span class="c1">// Check remaining time</span>
 <span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SoftwareTimer_Remaining</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Time remaining: %u ms</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">remaining</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Time remaining: %u ms</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">remaining</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -218,8 +218,8 @@ clock function:</p>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// This will return true only once when timer expires</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SoftwareTimer_IsExpiredEvaluatedOnce</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myTimer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Timer expired once!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="c1">// Timer won&#39;t trigger again until you call Set() again</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Timer expired once!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Timer won't trigger again until you call Set() again</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
